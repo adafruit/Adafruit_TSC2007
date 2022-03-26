@@ -69,6 +69,13 @@ bool Adafruit_TSC2007::begin(uint8_t address, TwoWire *wire) {
   return true;
 }
 
+/*!
+ *    @brief  Send a command and read 2 bytes from TSC
+ *    @param  func The command function to make
+ *    @param  pwr  The power mode to enter after command
+ *    @param  res  The ADC resolution
+ *    @return 12 bits of data shifted from the 16-bit read value
+ */
 uint16_t Adafruit_TSC2007::command(adafruit_tsc2007_function func,
                                    adafruit_tsc2007_power pwr,
                                    adafruit_tsc2007_resolution res) {
@@ -83,12 +90,20 @@ uint16_t Adafruit_TSC2007::command(adafruit_tsc2007_function func,
   return ((uint16_t)reply[0] << 4) | (reply[1] >> 4); // 12 bits
 }
 
+/*!
+ *    @brief  Read touch data from the TSC and then power down
+ *    @param  x Pointer to 16-bit value we will store x reading
+ *    @param  y Pointer to 16-bit value we will store y reading
+ *    @param  z1 Pointer to 16-bit value we will store z1 pressure reading
+ *    @param  z2 Pointer to 16-bit value we will store z1 pressure reading
+ *    @return True if ADC was able to read the x & y values
+ */
 bool Adafruit_TSC2007::read_touch(uint16_t *x, uint16_t *y, uint16_t *z1,
                                   uint16_t *z2) {
   *x = command(MEASURE_X, ADON_IRQOFF, ADC_12BIT);
   *y = command(MEASURE_Y, ADON_IRQOFF, ADC_12BIT);
   *z1 = command(MEASURE_Z1, ADON_IRQOFF, ADC_12BIT);
-  *z2 = command(MEASURE_Z1, ADON_IRQOFF, ADC_12BIT);
+  *z2 = command(MEASURE_Z2, ADON_IRQOFF, ADC_12BIT);
   command(MEASURE_TEMP0, POWERDOWN_IRQON, ADC_12BIT);
 
   return (*x != 4095) && (*y != 4095);

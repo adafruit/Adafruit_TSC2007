@@ -25,6 +25,9 @@
 
 #define TSC2007_I2CADDR_DEFAULT 0x48 ///< TSC2007 default i2c address
 
+/*!
+ *    @brief  Different function commands
+ */
 typedef enum {
   MEASURE_TEMP0 = 0,
   MEASURE_AUX = 2,
@@ -39,12 +42,18 @@ typedef enum {
   MEASURE_Z2 = 15
 } adafruit_tsc2007_function;
 
+/*!
+ *    @brief  Power and IRQ modes
+ */
 typedef enum {
   POWERDOWN_IRQON = 0,
   ADON_IRQOFF = 1,
   ADOFF_IRQON = 2,
 } adafruit_tsc2007_power;
 
+/*!
+ *    @brief  ADC resolution
+ */
 typedef enum {
   ADC_12BIT = 0,
   ADC_8BIT = 1,
