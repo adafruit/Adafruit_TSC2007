@@ -26,6 +26,22 @@
 #define TSC2007_I2CADDR_DEFAULT 0x48 ///< TSC2007 default i2c address
 
 /*!
+ *  @brief  Class for working with points
+ */
+class TS_Point {
+public:
+  TS_Point();
+  TS_Point(int16_t x, int16_t y, int16_t z);
+
+  bool operator==(TS_Point);
+  bool operator!=(TS_Point);
+
+  int16_t x; /**< x coordinate **/
+  int16_t y; /**< y coordinate **/
+  int16_t z; /**< z coordinate **/
+};
+
+/*!
  *    @brief  Different function commands
  */
 typedef enum {
@@ -73,6 +89,8 @@ public:
   uint16_t command(adafruit_tsc2007_function func, adafruit_tsc2007_power pwr,
                    adafruit_tsc2007_resolution res);
   bool read_touch(uint16_t *x, uint16_t *y, uint16_t *z1, uint16_t *z2);
+
+  TS_Point getPoint();
 
 private:
   Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
