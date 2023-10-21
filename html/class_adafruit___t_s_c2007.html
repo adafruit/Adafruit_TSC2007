@@ -86,6 +86,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab9f73dd835b3f47c0461c0efb3795556"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___t_s_c2007.html#ab9f73dd835b3f47c0461c0efb3795556">read_touch</a> (uint16_t *x, uint16_t *y, uint16_t *z1, uint16_t *z2)</td></tr>
 <tr class="memdesc:ab9f73dd835b3f47c0461c0efb3795556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read touch data from the TSC and then power down.  <a href="#ab9f73dd835b3f47c0461c0efb3795556">More...</a><br /></td></tr>
 <tr class="separator:ab9f73dd835b3f47c0461c0efb3795556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15d904b06584be102523f6e4db921d70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_t_s___point.html">TS_Point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___t_s_c2007.html#a15d904b06584be102523f6e4db921d70">getPoint</a> ()</td></tr>
+<tr class="memdesc:a15d904b06584be102523f6e4db921d70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get a point object rather than passing in pointers.  <a href="#a15d904b06584be102523f6e4db921d70">More...</a><br /></td></tr>
+<tr class="separator:a15d904b06584be102523f6e4db921d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that stores state and functions for interacting with the TSC2007 driver. </p>
@@ -217,11 +220,32 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">x</td><td>Pointer to 16-bit value we will store x reading </td></tr>
     <tr><td class="paramname">y</td><td>Pointer to 16-bit value we will store y reading </td></tr>
     <tr><td class="paramname">z1</td><td>Pointer to 16-bit value we will store z1 pressure reading </td></tr>
-    <tr><td class="paramname">z2</td><td>Pointer to 16-bit value we will store z1 pressure reading </td></tr>
+    <tr><td class="paramname">z2</td><td>Pointer to 16-bit value we will store z2 pressure reading </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if ADC was able to read the x &amp; y values </dd></dl>
+
+</div>
+</div>
+<a id="a15d904b06584be102523f6e4db921d70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15d904b06584be102523f6e4db921d70">&#9670;&nbsp;</a></span>getPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_t_s___point.html">TS_Point</a> Adafruit_TSC2007::getPoint </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to get a point object rather than passing in pointers. </p>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="class_t_s___point.html" title="Class for working with points. ">TS_Point</a>, all values will be 0 if touchscreen read failed </dd></dl>
 
 </div>
 </div>
