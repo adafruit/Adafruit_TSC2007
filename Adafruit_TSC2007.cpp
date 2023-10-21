@@ -99,7 +99,7 @@ uint16_t Adafruit_TSC2007::command(adafruit_tsc2007_function func,
   // Wait 1/2ms for conversion
   delayMicroseconds(500);
 
-  if (! i2c_dev->read(reply, 2)) {
+  if (!i2c_dev->read(reply, 2)) {
     return 0;
   }
 
@@ -127,27 +127,28 @@ bool Adafruit_TSC2007::read_touch(uint16_t *x, uint16_t *y, uint16_t *z1,
 
   command(MEASURE_TEMP0, POWERDOWN_IRQON, ADC_12BIT);
 
-  if (abs((int32_t)x1-(int32_t)x2) > 100) return false;
-  if (abs((int32_t)y1-(int32_t)y2) > 100) return false;
-  
+  if (abs((int32_t)x1 - (int32_t)x2) > 100)
+    return false;
+  if (abs((int32_t)y1 - (int32_t)y2) > 100)
+    return false;
+
   *x = x1;
   *y = y1;
   return (*x != 4095) && (*y != 4095);
 }
 
-
-
-
+/*!
+ *  @brief  Function to get a point object rather than passing in pointers
+ *  @returns A TS_Point, all values will be 0 if touchscreen read failed
+ */
 TS_Point Adafruit_TSC2007::getPoint(void) {
   uint16_t x, y, z1, z2;
 
-  if (! this->read_touch(&x, &y, &z1, &z2)) {
+  if (!this->read_touch(&x, &y, &z1, &z2)) {
     return TS_Point(0, 0, 0);
   }
   return TS_Point(x, y, z1);
 }
-
-
 
 /*!
  *  @brief  TS_Point constructor

@@ -41,7 +41,6 @@ public:
   int16_t z; /**< z coordinate **/
 };
 
-
 /*!
  *    @brief  Different function commands
  */
